@@ -1,0 +1,141 @@
+// @import '../lib/variables';
+
+.sds-card-wrapper{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+
+    @include phone(){
+        grid-template-columns: initial;
+    }
+
+}
+
+.sds-card {
+    font-family: $font-family;
+    display: grid;
+    gap: 10px;
+    grid-template-areas: "header""body""action";
+    grid-template-rows: min-content minmax(200px,auto) min-content;
+    min-height: 100%; // Esto hace que se ajuste al más grande. 
+    grid-auto-columns: 1fr;
+    padding: $padding-general;
+    border-radius: $border-radius--small;
+    border: $sds-border;
+    max-width: 300px;
+    width: 100%;
+
+    &.sds-card--full{
+        max-width: 100%;
+    }
+
+    @include phone(){
+        max-width: 100%;
+    }
+
+    &.sds-card--animated{
+        @include onHoverEffect();
+    }
+
+    .header {
+        grid-area: header;
+        border-bottom: 2px solid map-get($greyscale, color-lightergrey);
+        @include positioning();
+        width: 100%;
+
+        .title {
+            @extend %sds-title;
+        }
+    }
+
+    .body {
+        grid-area: body;
+        display: grid;
+        grid-template-areas: "image" "description";
+        grid-template-rows: 100px auto;
+        grid-auto-columns: 1fr;
+
+        .image {
+            grid-area: image;
+            @include positioning();
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+
+            &.image--banner{
+                img{
+                    width:100%;
+                        object-fit: cover;
+                }
+            }
+        }
+
+        .description {
+            @extend %sds-text;
+            grid-area: description;
+            @include positioning();
+        }
+
+        &.no-description{
+            grid-template-areas: "image";
+            grid-template-rows: auto;
+        }
+
+    }
+
+    .actions {
+        grid-area: action;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        border-top: 1px solid map-get($greyscale, color-lightergrey);
+        padding-top: $padding-general;
+        justify-items: center;
+        @include positioning();
+
+        &.one-btn {
+            grid-template-columns: 1fr;
+        }
+
+        &.two-btn {
+            grid-template-columns: repeat(2, 1fr);
+            @include phone(){
+                grid-template-columns: 1fr;
+
+                & button {
+                    width: 100%;
+                }
+            }
+        }
+
+        &.three-btn {
+            grid-template-columns: repeat(3, 1fr);
+            @include phone(){
+                grid-template-columns: 1fr;
+                
+                & button {
+                    width: 100%;
+                }
+            }
+        }
+
+        @include phone(){
+            grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+        }
+
+    }
+
+    &.sds-card--no-actions{
+        grid-template-areas: "header""body";
+        grid-template-rows: min-content minmax(200px,auto);
+        
+    }
+ 
+    &.sds-card--no-image{
+        .body{
+            grid-template-areas: "description";
+            grid-template-rows: auto; 
+        }
+    }
+}

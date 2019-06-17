@@ -1,0 +1,151 @@
+// @import '../lib/variables';
+
+.sds-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-areas: "modal-wrapper" ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .modal-wrapper{
+        grid-area: modal-wrapper;
+        background-color: rgba( map-get($greyscale, color-black), .6 );
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-areas: "modal";
+
+        .modal{
+            grid-area: modal;
+            max-width: 500px;
+            max-height: 300px;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border: 1px solid map-get($greyscale, color-darkgrey);
+            border-radius: $border-radius--small;
+            box-shadow: 0 0 4px map-get($greyscale , color-grey);
+            align-self: center;
+            justify-self: center;
+            padding: $padding-general;
+            display: grid;
+            grid-template-areas: "header" "body" "footer";
+            grid-template-rows: min-content auto min-content;
+            will-change: transform;
+            transition: transform .3s;
+
+            @include phone(){
+                max-width: calc(100% - 40px);
+            }
+            
+            .header{
+                grid-area: header;
+                position: relative;
+                margin-bottom: 8px;
+                padding-bottom: 4px;
+                border-bottom: 2px solid map-get($greyscale, color-grey);
+                @include positioning();
+                width: 100%;
+
+                .title {
+                    @extend %sds-modal-title;
+                }
+
+                .close{
+                    position: absolute;
+                    color: map-get($greyscale, color-lightgrey);
+                    transition: .3s;
+                    top: 5px;
+                    right: 10px;
+                    cursor: pointer;
+
+                    &:hover{
+                        color: map-get($greyscale, color-darkgrey);
+                    }
+                }
+            }
+            .body{
+                grid-area: body;
+                margin-bottom: 10px;
+                @extend %sds-modal-text;
+            }
+            .footer{
+                grid-area: footer;
+                padding-top: 8px;
+                border-top: 2px solid map-get($greyscale, color-lightergrey);
+            }
+        }
+    }
+
+    &.example{
+        position: relative;
+        width: initial;
+        height: initial;
+        min-width: 300px;
+        min-height: 300px;
+
+        .modal{
+            max-width: 300px;
+            max-height: 280px;
+        }
+    }
+
+    &.fade{
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility .3s , opacity .3s;
+
+        .modal{
+            transition: .5s;
+            transform: translateY(-50px);
+        }
+    }
+
+    &.open{
+        transition: visibility .3s , opacity .3s;
+        z-index: 10000;
+        visibility: visible;
+        opacity: 1;
+
+        .modal{
+            transform: translateY(0);
+        }
+    }
+
+    &.sds-modal--big{
+        .modal{
+            max-width: 750px;
+            max-height: 500px;
+
+            @include phone(){
+                max-width: calc(100% - 40px);
+                max-height: 60vh; 
+            }
+        }
+    }
+
+    &.sds-modal--small{
+        .modal{
+            max-width: 300px;
+            max-height: 250px;
+
+            @include phone(){
+                max-width: calc(100% - 40px);
+            }
+        }
+    }
+    
+    &.sds-modal--scroll{
+        .modal{
+           .body{
+                overflow-y: auto;
+           }
+        }
+    }
+
+}

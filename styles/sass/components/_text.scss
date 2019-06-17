@@ -1,0 +1,102 @@
+// @import '../lib/variables';
+
+$letter-spacing: -.5px;
+
+%sds-title{
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: $letter-spacing;
+    color: map-get($greyscale , color-black);
+}
+
+%sds-subtitle{
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: $letter-spacing;
+    color: map-get($greyscale , color-darkgrey);
+}
+
+%sds-text{
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: inherit;
+}
+
+%sds-header-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: map-get($greyscale , color-black);
+}
+
+%sds-header-text{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: map-get($greyscale , color-black);
+}
+
+%sds-list-title{
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: .5rem;
+    color: map-get($greyscale , color-black);
+}
+
+%sds-list-subtitle{
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 1rem 0 .4rem ;
+    color: map-get($greyscale , color-darkgrey);
+}
+
+%sds-list-text{
+    font-size: .9rem;
+    font-weight: 400;
+    color: map-get($greyscale , color-darkgrey);
+}
+
+// Banner Text
+
+%sds-banner-title{
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: $letter-spacing;
+}
+
+%sds-banner-subtitle{
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: $letter-spacing;
+}
+
+// Modal 
+
+%sds-modal-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: $letter-spacing;
+    color: map-get($greyscale , color-black);
+}
+
+%sds-modal-text {
+    font-size: 1rem;
+    font-weight: 400;
+    // letter-spacing: $letter-spacing;
+    color: map-get($greyscale , color-black);
+}
+
+// Forms
+
+%sds-form-label {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: $letter-spacing;
+    color: map-get($greyscale , color-darkgrey); 
+}
+
+%sds-form-input {
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: $letter-spacing;
+    color: map-get($greyscale , color-darkgrey); 
+}

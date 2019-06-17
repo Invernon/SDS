@@ -1,0 +1,109 @@
+// @import '../lib/variables';
+
+// Transition Ease - Normal
+
+%transition-slow{
+    transition: .7s ease-in-out;
+}
+
+%transition-normal{
+    transition: .5s ease-in-out;
+}
+
+%transition-fast{
+    transition: .3s ease-in-out;
+}
+
+@mixin onHoverEffect {
+    @extend %transition-normal;
+    
+    &:hover{
+        box-shadow: 5px 5px 0px 1px map-get($greyscale , color-lightergrey);
+        transform: translate(-5px , -5px);
+    }
+}
+
+// Buttons
+
+@mixin onFocusBtn($bg-color) {
+    @extend %transition-fast;
+    &:focus:not(:disabled){
+        box-shadow: 0px 0px 4px rgba( darken( $bg-color, 10% ), .7 );
+    }
+}
+
+@mixin onHoverBtn($bg-color) {
+    @extend %transition-fast;
+
+    &:hover:not(:disabled){
+        background-color: darken( $bg-color, 10% );
+        
+        &:disabled{
+            background-color: $bg-color;
+        }
+    }
+}
+
+@mixin onHoverBtn--outline($bg-color) {
+    @extend %transition-fast;
+
+    &:hover:not(:disabled){
+        color: darken( $bg-color, 10% );
+        
+        &:disabled{
+            background-color: $bg-color;
+        }
+    }
+}
+
+
+// Lists
+
+@mixin onHoverLi {
+    @extend %transition-fast;
+    
+    &:hover{
+        border-left: solid $color-secondary 4px;
+    }
+}
+
+@mixin UXDropdownItem {
+    @extend %transition-fast;
+    
+    &:hover{
+        background-color: lighten( $color-secondary, 25% );
+    }
+
+    &:active{
+        background-color: lighten( $color-secondary, 5% );
+        color:white;
+    }
+}
+
+@mixin fadeOut {
+
+    &.hide{
+        animation: fadeout 0.5s ease-out forwards;
+    }
+}
+
+@mixin open-heightAnimation {
+    @extend %transition-fast;
+    height: 0;
+    overflow: hidden;
+
+    &.open{
+        height: 100%;
+    }
+}
+
+@keyframes fadeout{
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

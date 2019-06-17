@@ -1,0 +1,56 @@
+// @import '../lib/variables';
+
+table.sds-table{
+    border: 1px solid map-get($greyscale, color-lightergrey);
+    box-shadow: 5px 5px 0px 1px map-get($greyscale, color-lightergrey);
+    padding: $padding-general--inside;
+    line-height: 1.5;
+    min-width: 350px;
+
+    @include tablet() {
+        min-width: auto;
+        width: 100%;;
+    }
+
+    thead{
+        background-color: map-get($greyscale, color-grey);
+        color: white;
+    }
+
+    tbody{
+        tr{
+            padding:  $padding-general--inside;
+        }
+
+        tr:not( :nth-child(1) ) {
+            td{
+                border-top: 1px solid map-get($greyscale, color-lightergrey);
+            }
+        }
+    }
+
+
+    &.sds-table--full{
+        width: 100%;
+        max-width: 100%;
+    }
+
+    &.sds-table--alternate{
+        thead{
+            background-color: initial;
+            color: initial;
+        } 
+        tbody{
+            tr{
+                &:nth-child(odd){
+                    background-color: map-get($greyscale, color-lightergrey);
+                }
+
+                td{
+                    border-top: initial;
+                }
+            }
+
+        }
+    }
+}

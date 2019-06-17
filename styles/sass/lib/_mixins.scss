@@ -1,0 +1,58 @@
+@mixin phone {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin big-desktop {
+    @media (max-width: 1800px) {
+        @content;
+    }
+}
+
+@mixin positioning {
+    &.justify--start {
+        @extend %justify-start;
+        @extend %text-left;
+    }
+
+    &.justify--center {
+        @extend %justify-center;
+        @extend %text-center;
+    }
+
+    &.justify--end {
+        @extend %justify-end;
+        @extend %text-right;
+    }
+}
+
+@mixin grid-self-align( $ele ) {
+    #{$ele}#{$ele}--start {
+        @extend %self-align-start;
+    }
+
+    #{$ele}#{$ele}--center {
+        @extend %self-align-center;
+    }
+
+    #{$ele}#{$ele}--end {
+        @extend %self-align-end;
+    }
+}
+
+@mixin cssReset {
+    @extend %reset-css;
+}

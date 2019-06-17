@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+
+// Reset Css
+$no-margin: 0px;
+$no-padding: 0px;
+$box-sizing: border-box;
+
+// Variables
+$gap-general: 4px;
+$padding-general: 8px;
+$padding-general--inside: 4px;
+
+$margin-general : 10px;
+// Font Family
+$font-family : Roboto, sans-serif;
+
+// Border Radius
+
+$border-radius--small: 4px;
+$border-radius--big: 8px;
+
+//  GrayScale
+$greyscale : (
+   color-black: rgb(55,55,55),
+   color-darkgrey: rgb(85, 85, 85),
+   color-grey: rgb(115, 115, 115),
+   color-lightgrey: rgb(191, 191, 191),
+   color-lightergrey: rgb(225, 225, 225),
+   color-white: rgb(255,255,255),
+);
+
+// Colors
+
+// $color-primary: #ff5b71; 
+$color-primary: #065a6b; 
+$color-secondary:#90AFC5;
+
+$color-default: #c0c0c0;
+// $color-success: #51b762;
+$color-success: #3D8131;
+// $color-warning:#fe9900;
+$color-warning:#F2D410;
+$color-danger: #ce2b2b;
+// $color-info: #2aaaff; 
+$color-info: #2879AF; 
+
+// Modificadores de BG
+
+.bg--primary{
+    background-color: $color-primary;
+} 
+.bg--secondary{
+    background-color: $color-secondary;
+}
+.bg--default{
+    background-color: $color-default;
+}
+.bg--success{
+    background-color: $color-success;
+}
+.bg--warning{
+    background-color: $color-warning;
+}
+.bg--danger{
+    background-color: $color-danger;
+}
+.bg--info{
+    background-color: $color-info;
+}
+
+
+// Buttons
+
+$btn-height: 34px;
+$btn-padding: 2px 14px;
+$btn-font-size: .9rem;
+
+$btn-color : $color-primary;
+
+$btn-disabled-color : map-get($greyscale , color-lightgrey);
+
+$btn-color-secondary : $color-secondary;
+
+$btn-color-default : $color-default;
+
+$btn-color-success : $color-success;
+
+$btn-color-danger : $color-danger;
+
+$btn-color-info : $color-info;
+
+$btn-color-warning : $color-warning;
+
+// Border-Elements
+$sds-border: 1px solid map-get($greyscale , color-lightergrey);
+
+
+// List Accents
+$sds-sidenav-background: #f9f9f9;
+$sds-sidenav-border-color: lightgrey;
+
+// Shadow grades
+$shadow-soft: 2px 2px 1px map-get($greyscale , color-lightergrey);
+$shadow-normal: 4px 4px 4px map-get($greyscale , color-lightergrey);
+$shadow-hard: 4px 4px 4px map-get($greyscale , color-lightgrey);
+
+//List Elements
+$sds-list-active: lighten( $color-secondary, 10% );
+$sds-list-hover: lighten( $color-secondary, 15% );
+$sds-list-inactive: darken( $color-secondary, 10% );
+// Sublist Accents
+$sds-sublist-active: lighten( $color-secondary, 25% );
+$sds-sublist-hover: lighten( $color-secondary, 30% );
+$sds-sublist-hover: lighten( $color-secondary, 30% );

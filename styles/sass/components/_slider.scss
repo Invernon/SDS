@@ -1,0 +1,121 @@
+// @import '../lib/variables';
+
+%slider-control{
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: transparent;
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover{
+        background: rgba(map-get($greyscale, color-lightergrey) , .2 );
+        color: rgba(map-get($greyscale, color-lightergrey) , .7 );
+    }
+}
+
+.sds-slider{
+    display: grid;
+    grid-template-areas: "slides" "controls";
+    min-height: 400px;
+    grid-auto-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+
+    .slides{
+        grid-area: slides;
+        position: relative;
+
+        .slide{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transition: .3s;
+
+            &.current{
+                opacity: 1;
+                visibility: visible;
+                transition: opacity .3s .35s cubic-bezier(0,0,.7,1), transform .4s .35s cubic-bezier(0,0,.5,1);
+            }
+
+            &.prev{
+                opacity: 0;
+                transform: translateX(-50px);
+                transition: opacity .3s .35s cubic-bezier(0,0,.7,1),transform .4s .35s cubic-bezier(0,0,.5,1);
+            }
+
+            &.next{
+                opacity: 0;
+                transform: translateX(50px);
+                transition: opacity .3s .35s cubic-bezier(0,0,.7,1),transform .4s .35s cubic-bezier(0,0,.5,1);
+            }
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+    }
+
+    .controls{
+        grid-area: controls;
+        justify-self: center;
+        color: lightgray;
+        font-size: 1.5rem;
+        position: absolute;
+        bottom: 6px;
+        cursor: pointer;
+
+        a:nth-child(1){
+            margin-right: 5px;
+            text-shadow: 0px 0px 5px map-get($greyscale , color-black), -1px 2px 2px map-get($greyscale , color-black);
+        }
+        a:nth-last-child(1){
+            margin-left: 5px;
+            text-shadow: 0px 0px 5px map-get($greyscale , color-black), 1px 2px 2px map-get($greyscale , color-black);
+        }
+
+        a{
+            transition: .3s;
+            
+            &:hover{
+                transform: scale(1.1);
+                color: grey;
+            }
+        }
+
+    }
+
+    &.sds-slider--side-controls{
+        grid-template-areas: "left-c slides right-c";
+
+        .slides{
+            position: static;
+        }
+
+        .left-control{
+            grid-area: left-c;
+            left: 0;
+            @extend %slider-control;
+            
+            
+        }
+        
+        .right-control{
+            grid-area: right-c;
+            right: 0;
+            @extend %slider-control;
+            
+        }
+    }
+
+}

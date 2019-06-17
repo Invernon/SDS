@@ -1,0 +1,91 @@
+// @import '../lib/variables';
+
+.sds-dropdown{
+    
+    display: inline-grid;
+    grid-template-areas: 'button' 'list';
+    grid-template-rows: auto auto;
+    grid-template-columns: max-content;
+    position: relative;
+
+    .dropdown-toggle{
+        grid-area: button;
+    }
+
+    .dropdown-menu{
+        grid-area: list;
+        display: grid;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        transition: height .3s , padding .2s ;
+        position: absolute;
+        background-color: white;
+        justify-content: center;
+        z-index: 99;
+
+        &.show{
+            height: auto;
+            border: 1px solid lightgrey;
+            padding: $padding-general--inside*2 0px;
+            border-radius: 4px;
+        }
+
+        .dropdown-item{
+            padding: 8px 16px;
+            cursor: pointer;
+            @include UXDropdownItem();
+        }
+        
+        .dropdown-divider{
+            border-bottom: 1px solid lightgray;
+            margin: 8px 0px;
+        }
+    }
+
+    &.sds-dropdown--split{
+        // grid-template-areas: 'title button' 'list list';
+
+        .sds-btn-group{
+            grid-area: button;
+
+            .sds-btn:nth-last-child(1){
+                min-width: fit-content;
+                padding: 4px 8px;
+            }
+        }
+
+        .dropdown-toggle{
+            grid-area: initial;
+        }
+    
+    }
+
+    &.sds-dropdown--up{
+
+        .dropdown-menu{
+            position: absolute;
+            will-change: trasform;
+            transform: translate( 0 , calc(-100% - 38px) );
+        }
+
+    }
+
+    &.sds-dropdown--left{
+        grid-template-areas: 'list button';
+        .dropdown-menu{
+            position: absolute;
+            transform: translate( calc(-100% - 4px) , 2px );
+        }
+    }
+
+    &.sds-dropdown--right{
+        grid-template-areas: 'button list';
+
+        .dropdown-menu{
+            position: absolute;
+            transform: translate( 4px , 2px );
+        }
+    }
+   
+}

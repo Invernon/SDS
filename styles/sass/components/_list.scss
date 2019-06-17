@@ -1,0 +1,68 @@
+// @import '../lib/variables';
+
+ul {
+    list-style: none;
+
+    li {
+        // @extend %sds-list-text;
+    }
+}
+
+ul.sds-list {
+
+    &.sds-list--standard {
+        list-style-type: circle;
+        padding-inline-start: 40px;
+        margin-block-end: 1em;
+        @supports not (padding-inline-start:40px){
+            margin-left:40px;
+        }
+    }
+
+    &.sds-list--data {
+        display: grid;
+        grid-auto-columns: auto;
+        grid-auto-rows: auto;
+        gap: 4px;
+
+        li {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 1fr;
+            align-items: center;
+            gap: 0px 2px;
+
+            div:nth-of-type(n) {
+                width: 100%;
+            }
+        }
+
+        li.header {
+            grid-row: 1 / -1;
+            font-weight: 500;
+            padding: $padding-general--inside;
+            border-bottom: 1px solid map-get($greyscale, color-grey);
+        }
+
+        li.data {
+            padding: $padding-general--inside;
+        } 
+
+        &.sds-list--alternate {
+            li.header {
+                background-color: initial;
+                color: initial;
+                border-bottom: initial;
+            }
+
+            li.data {
+                &:nth-child(even) {
+                    background-color: map-get($greyscale, color-lightergrey);
+                }
+            }
+
+        }
+    }
+
+
+}

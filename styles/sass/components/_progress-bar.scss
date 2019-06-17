@@ -1,0 +1,64 @@
+// @import '../lib/variables';
+
+div.sds-progress-bar{
+    display: grid;
+    grid-template-areas: "progress";
+    background-color: map-get($greyscale, color-lightergrey);
+    border-radius: 4px;
+    min-height: 14px;
+    
+    .progress{
+        transition: .5s ease-out;
+        grid-area: progress;
+        width:0%;
+        background-color: darken($color-primary, 5%);
+        margin: 0 1px;
+        border-radius: inherit;
+        text-align: center;
+        align-content: center;
+        display: grid;
+        color:white;
+        font-size: 12px;
+    }
+    
+    &.sds-progress-bar--expanding{
+        .progress{
+            justify-self: center;
+        }
+    }
+
+    &.sds-progress-bar--default{
+        .progress{
+            background-color: $color-default;
+        }
+    }
+
+    &.sds-progress-bar--success{
+        .progress{
+            background-color: $color-success;
+        }
+    }
+
+    &.sds-progress-bar--warning{
+        .progress{
+            background-color: $color-warning;
+        }
+    }
+
+    &.sds-progress-bar--danger{
+        .progress{
+            background-color: $color-danger;
+        }
+    }
+
+    &.sds-progress-bar--info{
+        .progress{
+            background-color: $color-info;
+        }
+    }
+   
+    &.sds-progress-bar--big{
+       min-height: 24px;
+       font-size: 16px;
+    }
+}

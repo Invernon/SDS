@@ -1,0 +1,32 @@
+@import './sass/lib/variables';
+@import './sass/lib/positioning';
+@import './sass/lib/mixins';
+// Layout
+@import './sass/layout/_margin';
+@import './sass/layout/_padding';
+@import './sass/layout/_layout';
+// Components
+@import './sass/components/_transition';
+@import './sass/components/_input';
+@import './sass/components/_alerts';
+@import './sass/components/_table';
+@import './sass/components/_list';
+@import './sass/components/_slider';
+@import './sass/components/_dropdown';
+@import './sass/components/_data-table';
+@import './sass/components/_progress-bar';
+@import './sass/components/_heading';
+@import './sass/components/_text';
+@import './sass/components/_banner';
+@import './sass/components/_button';
+@import './sass/components/_forms';
+@import './sass/components/_switch';
+@import './sass/components/_card';
+@import './sass/components/_modal';
+@import './sass/components/_navbar';
+
+body, ul, ol, html, figure{
+    // Restableciendo CSS del navegador
+    padding: 0;
+    margin: 0;
+}

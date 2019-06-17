@@ -1,0 +1,57 @@
+// @import '../lib/variables';
+
+div.sds-banner {
+    display: grid;
+    min-height: 200px;
+    background-color: grey;
+    grid-template-areas: "title" "subtitle";
+    grid-template-rows: min-content min-content;
+    justify-items: start;
+    align-content: end;
+    position: relative;
+    overflow: hidden;
+    color: white;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .title {
+        grid-area: title;
+        @extend %sds-banner-title;
+        position: relative;
+        padding: $padding-general;
+    }
+
+    .subtitle {
+        grid-area: subtitle;
+        @extend %sds-banner-subtitle;
+        position: relative;
+        padding: $padding-general;
+    }
+
+    &.sds-banner--inverse {
+        color: map-get($greyscale , color-black); 
+    }
+   
+    &.sds-banner--top {
+        align-content: start;
+    }
+
+    &.sds-banner--right {
+        justify-items: end;
+    }
+
+    &.sds-banner--text-shadow {
+        text-shadow: 3px 3px 0 #6b6b6b, -1px -1px 0 #6b6b6b, 1px -1px 0 map-get($greyscale , color-black), -1px 1px 0 #6b6b6b, 1px 1px 0 map-get($greyscale , color-black);
+    }
+    
+    &.sds-banner--no-text {
+        grid-template-areas: initial;
+    }
+}

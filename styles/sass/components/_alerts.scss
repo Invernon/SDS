@@ -1,0 +1,128 @@
+// @import '../lib/variables';
+
+%iconBefore{
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+    text-align: center;
+    grid-area: icon
+}
+
+%alertGridIcon{
+    grid-template-areas: "icon messagge close";
+    grid-template-columns: 30px 1fr 20px;
+}
+
+.sds-alert{
+    background-color: lighten($color-primary, 10%);
+    border-color: $color-primary;
+    border-width: 1px;
+    border-style: solid;
+    margin: $margin-general 0;
+    display: grid;
+    grid-template-areas: "messagge close";
+    grid-template-columns: 1fr 20px;
+    grid-gap: $gap-general;
+    align-items: center;
+    padding: $padding-general;
+    border-radius: $border-radius--big;
+    color: map-get($greyscale , color-white);
+    box-shadow: $shadow-normal;
+
+    span{
+        grid-area:messagge;
+    }
+
+    @include fadeOut;
+
+    &.sds-alert{
+        
+        &--borderless{
+            border-width: initial;
+            border-style: none;
+        }
+
+        &--outline{
+            color: map-get($greyscale , color-black);
+            background-color: transparent;
+        }
+
+        &--default{
+            background-color: lighten($color-default, 20%);
+            border-color: $color-default;
+            color: map-get($greyscale, color-black);
+            @extend %alertGridIcon;
+    
+            &:before {
+                @extend %iconBefore;
+                content: "\f068";
+             }
+        }
+
+        &--success{
+            background-color: lighten($color-success, 45%);
+            border-color: $color-success; 
+            color: darken($color-success,20%);
+            @extend %alertGridIcon;
+            &:before {
+                @extend %iconBefore;
+                content: "\f00c";
+             }     
+        }
+
+        &--warning{
+            background-color: lighten($color-warning, 40%);
+            border-color: $color-warning; 
+            color: darken($color-warning, 25%);
+            @extend %alertGridIcon;
+            &:before {
+                @extend %iconBefore;
+                content: "\f071";
+            }
+        }
+       
+        &--danger{
+            background-color: lighten($color-danger, 45%);
+            border-color: $color-danger; 
+            color: darken($color-danger, 20%);
+            @extend %alertGridIcon;
+            &:before {
+                content: "\f00d";
+                @extend %iconBefore;
+             }
+        }
+
+        &--info{
+            background-color: lighten($color-info, 35%);
+            border-color: $color-info; 
+            color: darken($color-info, 30%);
+            @extend %alertGridIcon;
+            &:before {
+                content: "\f12a";
+                @extend %iconBefore;
+             }
+        }
+
+        &--custom{
+            background-color: initial;
+            border-color: initial;
+        }
+
+        & .close-btn{
+            display: grid;
+            @extend %justify-content-center;
+            @extend %align-content-center;
+            grid-area:close;
+            cursor: pointer;
+        }
+    
+
+    }
+
+    // &.sds-alert--outline{
+    //     background-color: transparent;
+    // }
+
+}

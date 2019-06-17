@@ -1,0 +1,167 @@
+
+%justify-start{
+    justify-content: start;
+    justify-self: start;
+}
+
+%justify-center{
+    justify-content: center;
+    justify-self: center;
+}
+
+%justify-end{
+    justify-content: end;
+    justify-self: end;
+}
+
+// Text Alignment
+%text-center{
+    text-align: center;
+}
+.text-center{
+    @extend %text-center;
+}
+%text-left{
+    text-align: left;
+}
+.text-left{
+    @extend %text-left;
+}
+%text-right{
+    text-align: right;
+}
+.text-right{
+    @extend %text-right;
+}
+
+// Grid Self Positioning
+%self-align-start{
+    align-self: start;
+}
+.self-align-start{
+    @extend %self-align-start;
+}
+
+%self-align-center{
+    align-self: center;
+}
+.self-align-center{
+    @extend %self-align-center;
+}
+
+%self-align-end{
+    align-self: end;
+}
+.self-align-end{
+    @extend %self-align-end;
+}
+
+
+%self-justify-start{
+    justify-self: start;
+}
+.self-justify-start{
+    @extend %self-align-start;
+}
+
+%self-justify-center{
+    justify-self: center;
+}
+.self-justify-center{
+    @extend %self-align-center;
+}
+
+
+%self-justify-end{
+    justify-self: end;
+}
+.self-justify-end{
+    @extend %self-align-end;
+}
+
+
+// Grid Content Positioning
+%justify-content-start{
+    justify-content: start;
+}
+.justify-start{
+    @extend %justify-content-start;
+}
+
+%justify-content-center{
+    justify-content: center;
+}
+.justify-center{
+    @extend %justify-content-center;
+}
+
+%justify-content-end{
+    justify-content: end;
+}
+.justify-end{
+    @extend %justify-content-end;
+}
+
+%align-content-start{
+    align-self: start;
+}
+
+.align-start{
+    @extend %align-content-start;
+}
+
+%align-content-center{
+    align-self: center;
+}
+.align-center{
+    @extend %align-content-center;
+}
+
+%align-content-end{
+    align-self: end;
+}
+.align-end{
+    @extend %align-content-end;
+}
+
+// Grid Content Items Positioning
+.justify-items-start{
+    justify-items: start;
+}
+
+.justify-items-center{
+    justify-items: center;
+}
+
+.justify-items-end{
+    justify-items: end;
+}
+
+.align-items-start{
+    align-items: start;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.align-items-end{
+    align-items: end;
+}
+
+// Opcion para ofrecer soporte a todos los navegadores. Emular la propiedad 'Place'
+
+.full-start{
+    @extend %justify-content-start;
+    @extend %align-content-start;
+}
+
+.full-center{
+    @extend %justify-content-center;
+    @extend %align-content-center;
+}
+
+.full-end{
+    @extend %justify-content-end;
+    @extend %align-content-end;
+}

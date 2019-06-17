@@ -1,0 +1,142 @@
+// @import '../lib/variables';
+
+a.sds-btn , button.sds-btn , input.sds-btn{
+    min-height: $btn-height;
+    max-height: $btn-height;
+    border-radius: $border-radius--small;
+    border: 1px solid darken( $btn-color, 5% );;
+    background-color: $btn-color;
+    color: #fff;
+    outline: none;
+    min-width: min-content;
+    margin: 2px 0;
+    cursor: pointer;
+    display: inline-grid;
+    width: fit-content;
+    padding: $btn-padding;
+    font-size: $btn-font-size;
+    box-shadow: $shadow-soft;
+
+    @include onHoverBtn($btn-color);
+    @include onFocusBtn($btn-color);
+
+    &.sds-btn--block{
+        width: 100%;
+        margin: 4px 0;
+    }
+
+    &.sds-btn--secondary{
+        border: 1px solid darken($btn-color-secondary, 5%);
+        background-color: $btn-color-secondary;
+        color: #fff;
+
+        @include onHoverBtn($btn-color-secondary);
+        @include onFocusBtn($btn-color-secondary);
+
+        &.sds-btn--outline{
+            color: initial;
+            @include onHoverBtn--outline($btn-color-secondary );
+            background-color: initial!important;
+        }
+    }
+
+    &.sds-btn--default{
+        border: 1px solid darken( $btn-color-default, 5% );
+        background-color: $btn-color-default;
+        color: map-get($greyscale, color-black);
+        @include onHoverBtn($btn-color-default);
+        @include onFocusBtn($btn-color-default);
+        &.sds-btn--outline{
+            color: initial;
+            @include onHoverBtn--outline($btn-color-default );
+            background-color: initial!important;
+        }
+    }
+
+    &.sds-btn--success{
+        border: 1px solid darken( $btn-color-success, 5% );
+        background-color: $btn-color-success;
+        color: #fff;
+        @include onHoverBtn($btn-color-success);
+        @include onFocusBtn($btn-color-success);
+        &.sds-btn--outline{
+            color: initial;
+            @include onHoverBtn--outline($btn-color-success );
+            background-color: initial!important;
+        }
+    }
+
+    &.sds-btn--danger{
+        border: 1px solid darken(  $btn-color-danger, 5% );
+        background-color: $btn-color-danger;
+        color: #fff;
+        @include onHoverBtn($btn-color-danger);
+        @include onFocusBtn($btn-color-danger);
+        &.sds-btn--outline{
+            color: initial;
+            @include onHoverBtn--outline($btn-color-danger );
+            background-color: initial!important;
+        }
+    }
+    
+    &.sds-btn--info{
+        border: 1px solid darken(  $btn-color-info, 5% );
+        background-color: $btn-color-info;
+        color: #fff;
+        @include onHoverBtn($btn-color-info);
+        @include onFocusBtn($btn-color-info);
+
+        &.sds-btn--outline{
+            color: initial;
+            @include onHoverBtn--outline($btn-color-info );
+            background-color: initial!important;
+        }
+    }
+    
+    &.sds-btn--warning{
+        border: 1px solid darken(  $btn-color-warning, 5% );
+        background-color: $btn-color-warning;
+        color: map-get($greyscale, color-black);
+        @include onHoverBtn($btn-color-warning);
+        @include onFocusBtn($btn-color-warning);
+
+        &.sds-btn--outline{
+            color: initial;
+            @include onHoverBtn--outline($btn-color-warning );
+            background-color: initial!important;
+        }
+    }
+
+    &.sds-btn--outline{
+        color: initial;
+        @include onHoverBtn--outline( $btn-color);
+        background-color: initial!important;
+    }
+    
+    &:disabled{
+        background: $btn-disabled-color;
+        color: #848484;
+        border: 1px solid #bbbbbb;
+        cursor: default;
+    }
+
+}
+
+.sds-btn-group{
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 1fr));
+    display: inline-grid;
+    grid-auto-flow: column;
+    
+    & .sds-btn{
+        width: initial;
+        border-radius: initial;
+    }
+
+    & .sds-btn:nth-child(1){
+        border-radius: $border-radius--small 0 0 $border-radius--small ;
+    }
+    
+    & .sds-btn:nth-last-child(1){
+        border-radius: 0 $border-radius--small $border-radius--small 0;
+    }
+}

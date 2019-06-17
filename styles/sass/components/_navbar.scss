@@ -1,0 +1,234 @@
+// @import '../lib/variables';
+
+.sds-navbar{
+    display: grid;
+    grid-template-areas: "brand navigation menu";
+    grid-template-columns: 200px auto 100px;
+    grid-gap: $gap-general;
+    align-items: stretch;
+
+    @include tablet(){
+        grid-template-areas: "menu brand" "navigation navigation";
+        grid-template-columns: 1fr 3fr;    
+    }
+    
+    &__brand{
+        padding: $padding-general;
+        display: grid;
+        grid-area: brand;
+
+        &__logo, img{
+            max-height: 100%;
+            max-width: 100%;
+            align-self: center;
+            justify-self: right;
+            padding-right: 10%;
+        }
+
+        figure {
+            display: grid;
+
+            img {
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+        
+        &__title{
+            @extend %sds-header-title;
+            color: inherit;
+
+            &.sds-navbar__brand__title--big{
+                font-size: 2rem;
+                letter-spacing: -4px;
+                font-weight: bold;
+                text-shadow: 3px 3px 4px map-get($greyscale , color-black);;
+                font-family: sans-serif;
+            }
+            &.sds-navbar__brand__title--small{
+                font-size: 1.3rem;
+            }
+        }
+    }
+    
+    &__navigation{
+        grid-area: navigation;  
+        padding: $padding-general;
+        display: grid;
+        @include tablet(){
+            display: none;
+            border-top: 1px solid lightgray;
+            &.active{
+              display:grid;  
+            }
+        }
+    }
+    
+    &__menu{
+        grid-area: menu;
+        font-size: 2rem;
+        display: none;
+        padding: $padding-general;
+        @include tablet(){
+            display: grid;
+            justify-content: center;
+            align-content: center;
+        }
+    }
+
+    &.sds-navbar--primary{
+        background-color: $color-primary;
+        color:white;
+    }
+}
+
+.sds-sidenav{
+    grid-area: sidenav;
+    padding: $padding-general;
+    display: grid;
+    grid-template-areas: "title" "content";
+    grid-template-rows: min-content auto;
+    align-items: stretch;
+    background-color: $sds-sidenav-background;
+    max-height: calc(100vh - 84px);
+    overflow-y: auto;
+    border-right: 1px solid $sds-sidenav-border-color;
+    z-index: 99;
+    
+    .action {
+        grid-area: action;
+        display: none;
+    }
+
+    @include tablet(){
+        grid-template-areas: "action" "title" "content";
+        grid-template-rows: min-content min-content auto;
+        max-height: 40px;
+        overflow-y: hidden;
+        position: sticky;
+        top: 60px;
+        border-right: initial;
+        border-bottom: 1px solid $sds-sidenav-border-color;
+    
+
+        .action{
+            display: block;
+            height: 40px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    }
+
+  
+    .title{
+        grid-area: title;
+        @extend %sds-list-title;
+        border-bottom: 1px solid $sds-sidenav-border-color;
+    
+    }
+
+    .content{
+        grid-area: content;
+        
+        .element{
+            display: grid;
+            padding-left: 1rem;
+            grid-template-areas: "title" "sub-elements";
+
+            &__title{
+                @extend %sds-list-subtitle;
+                grid-area: title;
+                cursor: pointer;
+                padding: $padding-general--inside;
+                grid-template-columns: auto min-content;
+                display: grid;
+                align-items: center;
+
+                &.active{
+                    font-weight: bold;
+                    background-color: $sds-sublist-active;
+                }
+
+                &:hover{
+                    background-color: $sds-list-hover;
+                }
+            }
+            
+            &__sub-elements{
+                grid-area: sub-elements;
+                padding-left: 2rem;
+                @extend %sds-list-text; 
+                @include open-heightAnimation();
+
+                li{
+                    cursor: pointer;
+                    padding: $padding-general--inside;
+                }
+
+                li.active{
+                    font-weight: bold;
+                    background-color: $sds-sublist-active;
+                }
+
+                li:hover{
+                    background-color: $sds-sublist-hover;
+                }
+
+            }
+
+        }
+
+
+    }
+}
+
+@media (max-width:767px){
+    .sds-sidenav.active{
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+.sds-nav {
+    display: grid;
+    align-self: start; //Por defecto
+
+    &.sds-nav--hor {
+        --auto-grid-min-size: 8rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+
+        @include phone() {
+            --auto-grid-min-size: 1fr;
+        }
+    }
+
+    &.sds-nav--ver {
+        grid-auto-rows: 1fr;
+    }
+
+
+    li,
+    & &__li {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        cursor: pointer;
+        padding-left: 4px;
+        color:inherit;
+        @extend %sds-list-subtitle;
+
+        @include phone() {
+            justify-items: start;
+        }
+
+        &.sds-nav__li--active {
+            font-weight: 700;
+            border-left: 4px solid $color-secondary;
+        }
+
+        @include onHoverLi();
+    }
+}
+
+@include grid-self-align('.sds-nav');

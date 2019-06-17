@@ -1,0 +1,52 @@
+// @import '../lib/variables';
+
+.sds-data-table{
+    
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+    gap: 10px;
+
+    &__element{
+        display:grid;
+        grid-template-areas: "thumbnail info action";
+        grid-template-columns: 100px 2fr 1fr;
+        min-height: 80px;
+        border: $sds-border;
+
+        &__thumbnail{
+            grid-area: thumbnail;
+            display: grid;
+            padding: $padding-general--inside;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                place-self: center;
+            }
+        }
+        &__info{
+            grid-area: info;
+            display: grid;
+            padding: $padding-general--inside;
+            
+            &__title{
+                @extend %sds-title;
+            }
+            
+            &__description{
+                @extend %sds-text;
+            }
+        }
+        &__action{
+            grid-area: action;
+            display: grid;
+            padding: $padding-general--inside;
+            padding-right: 14px;
+            grid-template-columns: 1fr 1fr;
+            align-content: center;
+            gap: 10px;
+        }
+    }
+
+}

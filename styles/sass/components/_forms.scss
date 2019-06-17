@@ -1,0 +1,214 @@
+// @import '../lib/variables';
+
+%sds-input{
+    padding: $padding-general--inside;
+    padding: 4px;
+    border: none;
+    padding-left: 0;
+    border-bottom: 1.3px solid grey;
+    transition: .2s;
+
+    @extend %sds-form-input;
+
+    &:focus, &:active{
+        outline: none;
+        border-bottom: 1.3px solid $color-primary;
+        box-shadow: 0 2px 0px 0px $color-secondary;
+    }
+
+    &:disabled{
+        padding: 4px 10px;
+        border-radius: 4px 4px 0 0;
+        border-bottom: 1.3px solid grey;
+        box-shadow: 0 2px 0px 0px grey;
+        background: lightgray;
+    }
+}
+
+.sds-form-row{
+    display:grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+}
+
+.sds-form-group{
+    display: grid;
+    grid-template-areas: "label" "input";
+    grid-template-rows: min-content auto;
+    margin-bottom: $margin-general*1.6;
+
+    label{
+        @extend %sds-form-label;
+        margin-bottom: 2px;
+    }
+
+    input[type=text],input[type=email],input[type=password]{
+        @extend %sds-input;
+    }
+
+    select{
+        @extend %sds-input;
+    }
+
+    &.sds-form-group--placeholderless{
+        grid-template-areas: "label" "input";
+        grid-template-rows: min-content auto;
+        position: relative;
+
+        label{
+            @extend %sds-form-label;
+            transition: .2s;
+            position: absolute;
+        
+            &.upperside{
+                top: -16px;
+                font-size: .8rem;
+            }
+        }
+    }
+    
+    &.sds-form-group--inline{
+        grid-template-areas: "label input";
+        grid-template-rows: min-content;
+        grid-template-columns: minmax(min-content , 150px) auto;
+        gap: 20px 10px ;
+        position: relative;
+
+        label{
+            grid-area: label;
+            @extend %sds-form-label;
+            position: relative;
+            bottom: -2px;
+        }
+
+        input{
+            grid-area: input;
+            padding-left: 4px;
+        }
+    }
+    
+    &.sds-form-group--checkbox{
+        grid-template-areas: "checkbox label";
+        grid-template-rows: min-content;
+        grid-template-columns: 20px auto;
+        gap: 10px;
+        position: relative;
+    
+        label{
+            @extend %sds-form-label;
+            grid-area: label;
+            position: relative;
+            bottom: -4px;
+        }
+
+        input[type=checkbox], .sds-form-checkbox{
+            grid-area: checkbox;
+            width: 16px;
+            height: 16px;
+            position: relative;
+            bottom: -2px;
+        }
+    }
+   
+    &.sds-form-group--radio{
+        grid-template-areas: "radio label";
+        grid-template-rows: min-content;
+        grid-template-columns: 20px auto;
+        gap: 10px;
+        position: relative;
+    
+        label{
+            @extend %sds-form-label;
+            grid-area: label;
+            position: relative;
+            bottom: -4px;
+        }
+
+        input[type=radio], .sds-form-radio{
+            grid-area: radio;
+            width: 16px;
+            height: 16px;
+            position: relative;
+            bottom: -2px;
+        }
+    }
+    
+    &.sds-form-group--checkbox-inline{
+        display: inline-grid;
+        grid-template-areas: "checkbox label";
+        grid-template-rows: min-content;
+        grid-template-columns: 20px auto;
+        gap: 10px;
+        position: relative;
+    
+        label{
+            @extend %sds-form-label;
+            grid-area: label;
+            position: relative;
+            bottom: -4px;
+        }
+
+        input[type=checkbox], .sds-form-checkbox{
+            grid-area: checkbox;
+            width: 16px;
+            height: 16px;
+            position: relative;
+            bottom: -2px;
+        }
+    }
+   
+    &.sds-form-group--radio-inline{
+        display: inline-grid;
+        grid-template-areas: "radio label";
+        grid-template-rows: min-content;
+        grid-template-columns: 20px auto;
+        gap: 10px;
+        position: relative;
+    
+        label{
+            @extend %sds-form-label;
+            grid-area: label;
+            position: relative;
+            bottom: -4px;
+        }
+
+        input[type=radio], .sds-form-radio{
+            grid-area: radio;
+            width: 16px;
+            height: 16px;
+            position: relative;
+            bottom: -2px;
+        }
+    }
+}
+
+
+.sds-form-input{
+    @extend %sds-input;
+}
+
+.sds-form-select{
+    @extend %sds-input;
+}
+
+.form-require{
+    color:#fd4444;
+
+    &.small{
+        font-size: 12px;
+    }
+}
+
+.form-control:focus {
+    box-shadow: 0 0 1px 0.1rem rgba(0,123,255,.25);
+}
+
+.form-control.ng-dirty.ng-valid {
+    border-color: #5bc153;
+    box-shadow: 0 0 1px 0.1rem rgba(79, 208, 113, 0.25) 
+}
+
+.form-control.ng-dirty.ng-invalid{
+    border-color: #fd4444;
+    box-shadow: 0 0 1px 0.1rem rgba(241, 60, 60, 0.25);
+}

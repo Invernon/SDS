@@ -30,22 +30,21 @@ $greyscale : (
    color-white: rgb(255,255,255),
 );
 
-// Colors
+// Library Color's 
 
-// $color-primary: #ff5b71; 
+// If you need to change the primary color, just edit the next line.
 $color-primary: #065a6b; 
+
+// If you need to change the secondary color, just edit the next line.
 $color-secondary:#90AFC5;
 
 $color-default: #c0c0c0;
-// $color-success: #51b762;
 $color-success: #3D8131;
-// $color-warning:#fe9900;
 $color-warning:#F2D410;
 $color-danger: #ce2b2b;
-// $color-info: #2aaaff; 
 $color-info: #2879AF; 
 
-// Modificadores de BG
+// Background Modifiers
 
 .bg--primary{
     background-color: $color-primary;
@@ -109,6 +108,7 @@ $shadow-hard: 4px 4px 4px map-get($greyscale , color-lightgrey);
 $sds-list-active: lighten( $color-secondary, 10% );
 $sds-list-hover: lighten( $color-secondary, 15% );
 $sds-list-inactive: darken( $color-secondary, 10% );
+
 // Sublist Accents
 $sds-sublist-active: lighten( $color-secondary, 25% );
 $sds-sublist-hover: lighten( $color-secondary, 30% );

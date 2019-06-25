@@ -44,11 +44,6 @@
             border-style: none;
         }
 
-        &--outline{
-            color: map-get($greyscale , color-black);
-            background-color: transparent;
-        }
-
         &--default{
             background-color: lighten($color-default, 20%);
             border-color: $color-default;
@@ -117,12 +112,12 @@
             grid-area:close;
             cursor: pointer;
         }
-    
+
+        &--outline{
+            color: map-get($greyscale , color-black);
+            background-color: transparent;
+        }
 
     }
-
-    // &.sds-alert--outline{
-    //     background-color: transparent;
-    // }
 
 }
